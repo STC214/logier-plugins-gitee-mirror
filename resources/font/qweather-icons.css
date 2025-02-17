@@ -7,9 +7,9 @@
 
 @font-face {
   font-family: "qweather-icons";
-  src: url("https://dd.atxrom.com/qweather-icons/fonts/qweather-icons.woff2") format("woff2"),
-       url("https://dd.atxrom.com/qweather-icons/fonts/qweather-icons.woff") format("woff"),
-       url("https://dd.atxrom.com/qweather-icons/fonts/qweather-icons.ttf") format("truetype");}
+  src: url("https://gitee.com/cnxiaodoubi/logier-plugins/raw/master/resources/font/fonts/qweather-icons.woff2") format("woff2"),
+       url("https://gitee.com/cnxiaodoubi/logier-plugins/raw/master/resources/font/fonts/qweather-icons.woff") format("woff"),
+       url("https://gitee.com/cnxiaodoubi/logier-plugins/raw/master/resources/font/fonts/qweather-icons.ttf") format("truetype");}
 
 [class^="qi-"]::before,
 [class*=" qi-"]::before {
