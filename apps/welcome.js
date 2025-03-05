@@ -1,4 +1,5 @@
 import { readAndParseJSON } from '../utils/getdate.js'
+import plugin from '../../../lib/plugins/plugin.js'
 
 export class newcomer extends plugin {
   constructor () {
@@ -18,7 +19,7 @@ export class newcomer extends plugin {
     /** 冷却cd 30s */
     let cd = 30
 
-    if (this.e.user_id == this.e.bot.uin) return
+    if (this.e.user_id === this.e.bot.uin) return
 
     /** cd */
     let key = `Yz:newcomers:${this.e.group_id}`
@@ -51,32 +52,4 @@ export class newcomer extends plugin {
   }
 }
 
-export class outNotice extends plugin {
-  constructor () {
-    super({
-      name: '退群通知',
-      dsc: 'xx退群了',
-      event: 'notice.group.decrease'
-    })
 
-    /** 退群提示词 */
-    this.tips = '退群了'
-  }
-
-  async accept () {
-    if (this.e.user_id == this.e.bot.uin) return
-
-    let name, msg
-    if (this.e.member) {
-      name = this.e.member.card || this.e.member.nickname
-    }
-
-    if (name) {
-      msg = `${name}(${this.e.user_id}) ${this.tips}`
-    } else {
-      msg = `${this.e.user_id} ${this.tips}`
-    }
-    logger.mark(`[退出通知]${this.e.logText} ${msg}`)
-    await this.reply(msg)
-  }
-}

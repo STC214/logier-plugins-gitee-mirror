@@ -71,6 +71,7 @@ export class TextMsg extends plugin {
 
   async 查看表情包 (e) {
     if (!e.isMaster) {
+      e.reply('非主人，取消指令')
       logger.info('非主人，取消指令')
       return false
     }
@@ -79,6 +80,7 @@ export class TextMsg extends plugin {
     let number = parseInt(this.e.msg.replace(/#?(查看表情)(包)?/, ''))
 
     if (!number) {
+      e.reply('无编号')
       logger.info('无编号')
       return false
     }
@@ -90,6 +92,7 @@ export class TextMsg extends plugin {
 
   async 删除表情包 (e) {
     if (!e.isMaster) {
+      e.reply('非主人，取消指令')
       logger.info('非主人，取消指令')
       return false
     }
@@ -103,11 +106,13 @@ export class TextMsg extends plugin {
 
   async 保存涩图 (e) {
     if (!e.isMaster) {
+      e.reply('非主人，取消指令')
       logger.info('非主人，取消指令')
       return false
     }
 
     if (!e.img && !e.source) {
+      e.reply('没有图片')
       logger.info('没有图片')
       return false
     }
@@ -121,6 +126,7 @@ export class TextMsg extends plugin {
 
   async 查看涩图 (e) {
     if (!e.isMaster) {
+      e.reply('非主人，取消指令')
       logger.info('非主人，取消指令')
       return false
     }
@@ -135,6 +141,7 @@ export class TextMsg extends plugin {
 
   async 删除涩图 (e) {
     if (!e.isMaster) {
+      e.reply('非主人，取消指令')
       logger.info('非主人，取消指令')
       return false
     }

@@ -121,61 +121,70 @@ async function generateFortune (e) {
     <!DOCTYPE html>
     <html>
     <head>
-    <style>
-    @font-face {
-    font-family: AlibabaPuHuiTi-2-55-Regular;
-    src:url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-55-Regular/AlibabaPuHuiTi-2-55-Regular.woff2) format('woff2');
-  }
-    * {
-      padding: 0;
-      margin: 0;
-    }
-    html {
-    font-family: 'AlibabaPuHuiTi-2-55-Regular', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
-  }
-    body{
-      position:absolute;
-    }
-    .nei{
-      float: left;
-      box-shadow: 3px 3px 3px #666666;
-      width: 50%;
-      min-width: 400px;
-      height:100%;
-      display:flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border-radius:10px 10px 10px 10px;
-      border:1px solid #a1a1a1;
-      background: rgba(255, 255, 255, 0.6);
-      z-index:1;
-      position:absolute;
-    }
-    p {
-      color : rgba(0,0,0, 0.5);
-      font-size:1.5rem;
-      padding: 2px; 
-      word-wrap: break-word;
-      white-space: pre-wrap;
-      text-align: center; 
-      font-weight: bold;
-    }
-    .centered-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      padding: 1em;
-      height: 100%;
-    }
-    .tu{
-    float: left;
-      border:1px solid #00000;
-    }
-    img{
-      border:1px solid #00000;
-      border-radius:10px 10px 10px 10px;
-    }
-    </style>
+      <style>
+        /* 定义自定义字体 */
+           @font-face {
+               font-family: 'HarmonyOS';
+               src: url('https://dd.atxrom.com/font/HarmonyOS.woff2') format('woff2');
+               font-weight: normal; /* 可以添加，如果字体有特定的重量 */
+               font-style: normal;  /* 可以添加，如果字体有特定的样式（如斜体） */
+           }
+           
+           /* 基础样式重置 */
+           html, body {
+               margin: 0;
+               padding: 0;
+               box-sizing: border-box; /* 添加此属性可以简化元素宽度和高度的计算 */
+               font-family: 'HarmonyOS', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+               line-height: 2.0; /* 可以添加一个默认的行高，使文本更易读 */
+               /* 其他基础样式，如字体颜色、背景颜色等，也可以在这里设置 */
+           }
+           
+           /* suangua.css */
+           body{
+               position:absolute;
+           }
+           .nei{
+               float: left;
+               box-shadow: 3px 3px 3px #666666;
+               width: 50%;
+               min-width: 400px;
+               height:100%;
+               display:flex;
+               flex-direction: column;
+               justify-content: space-between;
+               border-radius:10px 10px 10px 10px;
+               border:1px solid #a1a1a1;
+               background: rgba(255, 255, 255, 0.6);
+               z-index:1;
+               position:absolute;
+           }
+           p {
+               color : rgba(0,0,0, 0.5);
+               font-size:1.5rem;
+               padding: 2px;
+               word-wrap: break-word;
+               white-space: pre-wrap;
+               text-align: center;
+               font-weight: bold;
+           }
+           .centered-content {
+               display: flex;
+               flex-direction: column;
+               justify-content: flex-start;
+               padding: 1em;
+               height: 100%;
+           }
+           .tu{
+               float: left;
+               border:1px solid #00000;
+           }
+           img{
+               border:1px solid #00000;
+               border-radius:10px 10px 10px 10px;
+           }
+    
+      </style>
     </head>
     <body>
     <div class="tu">
@@ -212,6 +221,7 @@ async function generateFortune (e) {
 
     const page = await browser.newPage()
     await page.setContent(Html)
+
     const imgElement = await page.$('.tu img')
     // 对图片元素进行截图
     const image = Buffer.from(await imgElement.screenshot())

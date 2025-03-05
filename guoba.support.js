@@ -123,17 +123,7 @@ export function supportGuoba() {
         ],
       },
     },
-    {
-      field: 'EmojiThief.DefalutReplyRate',
-      label: '默认概率',
-      bottomHelpMessage: '不配置群时使用此概率',
-      component: "Slider",
-      componentProps: {
-        min: 0,
-        max: 1,
-        step: 0.01,
-      },
-    },
+
     {
       field: 'EmojiThief.DefalutEmojiRate',
       label: '仓库概率',
@@ -252,9 +242,6 @@ export function supportGuoba() {
           field: 'PushTime',
           label: '推送时间',
           component: 'EasyCron',
-          componentProps: {
-            placeholder: '请输入或选择Cron表达式',
-          },
         },
         {
           field: 'PushGroupList',
@@ -299,9 +286,6 @@ export function supportGuoba() {
           field: 'PushTime',
           label: '推送时间',
           component: 'EasyCron',
-          componentProps: {
-            placeholder: '请输入或选择Cron表达式',
-          },
         },
         {
           field: 'PushGroupList',
@@ -334,9 +318,7 @@ export function supportGuoba() {
     field: 'Weather.WeatherPushTime',
     label: '推送时间',
     component: 'EasyCron',
-          componentProps: {
-            placeholder: '请输入或选择Cron表达式',
-          },
+
   },
   {
     field: "Weather.WeatherPushgroup",

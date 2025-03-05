@@ -1,9 +1,9 @@
 Push:
   - FunctionName: 定时发图
     isAutoPush: false
-    PushTime: 0 0 */1 * * ?
+    "PushTime": 0 0 */1 * * ?
     PushGroupList: []
   - FunctionName: 今日番剧
     isAutoPush: false
-    PushTime: 0 30 18 * * ?
+    "PushTime": 0 30 18 * * ?
     PushGroupList: []

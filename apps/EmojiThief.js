@@ -22,7 +22,7 @@ export class TextMsg extends plugin {
     return setting.getConfig('EmojiThief')
   }
 
-  async 表情包小偷 (e) {
+   async 表情包小偷 (e) {
     let rate = this.appconfig.DefaultReplyRate // 默认概率
     let EmojiRate = this.appconfig.DefaultEmojiRate
     let groupMatched = false
@@ -51,7 +51,7 @@ export class TextMsg extends plugin {
           let listStr = await redis.get(key)
           let list = listStr ? JSON.parse(listStr) : []
           if (!list.includes(item.url)) {
-            logger.info('[表情包小偷]偷取表情包')
+            //logger.info('[表情包小偷]偷取表情包')
             list.push(item.url)
             if (list.length > 50) {
               list.shift()

@@ -91,31 +91,26 @@ export class TextMsg extends plugin {
 
 async function getItems () {
 
-    let response = await fetch('https://api.bgm.tv/calendar')
+    let response = await fetch('https://api.bgm.tv/calendar');
+    let data = await response.json();
 
-    let data = await response.json()
-
-    let now = new Date()
-
-    let weekday = (now.getDay() + 6) % 7 + 1 // 将星期日转换为7，星期一到星期六转换为1到6
+    let now = new Date();
+    let weekday = now.getDay(); // 获取当前的星期几，注意 JavaScript 的星期是从 0（周日）开始的
 
     // 找到对应星期的项目
-    let items = data.find(item => item.weekday.id === weekday).items
+    let items = data.find(item => item.weekday.id === weekday).items;
 
     // 提取 name_cn、rating 和 images 属性并组成新的数组
     let itemDetails = items.map(item => {
         return {
-            name: item.name_cn || '',
+            name:  item.name_cn || item.name || '',
             score: item.rating ? item.rating.score : '',
             image: item.images ? item.images.common : ''
         }
     }).filter(item => item.name && item.score && item.image) // 过滤掉任何属性为空的项
-
     logger.info(itemDetails)
     // 将 itemDetails 存入 Redis
-    await redis.set(`itemDetails`, JSON.stringify(itemDetails),{ EX: 14400 })
-
-
+    await redis.set(`itemDetails`, JSON.stringify(itemDetails),{ EX: 3600 })
 
     return itemDetails
 }

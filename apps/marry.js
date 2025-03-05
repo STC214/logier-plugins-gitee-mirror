@@ -161,95 +161,144 @@ async function getRandomWife (e) {
 async function generateFortune (e, replyMessage, content, imageUrl) {
   let 结婚诗词 = [
     '百年推甲子，福地在春申',
-
     '红毹拥出态娇妍，璧合珠联看并肩',
-
     '锦堂此夜春如海，瑞兆其昌五世绵',
-
     '喜溢重门迎凤侣，光增陋室迓宾车',
-
     '花好月圆庆佳期，鸟语芬芳喜事添',
-
     '蓬门且喜来珠履，侣伴从今到白头',
-
     '志同道合好伴侣，情深谊长新家庭',
-
     '连理枝头喜鹊闹，才子佳人信天缘',
-
     '百年恩爱双心结，千里姻缘一线牵',
-
     '琴韵谱成同梦语，灯花笑对含羞人',
-
     '佳偶天成心相印，百年好合乐无边',
-
     '洞房花烛交颈鸳鸯双得意，夫妻恩爱和鸣凤鸾两多情',
-
     '锋芒略敛夫妻和美，凡事无争伉俪温馨',
-
     '相亲相爱幸福永，同德同心幸福长',
-
     '鸳鸯璧合天缘定，龙凤呈祥喜气生',
-
     '百年修得同船渡，千年修得共枕眠',
-
     '良缘相遇情不禁，一种缘分两处思',
-
     '情投意合如芝兰，同心协力共克艰',
-
     '桃花潭水深千尺，不及汪伦送我情',
-
-    '花开花落两相知，缘来缘去共相守'
-  ]
-
+    '花开花落两相知，缘来缘去共相守']
   if (!content) {
     let randomIndex = Math.floor(Math.random() * 结婚诗词.length)
     content = 结婚诗词[randomIndex]
   }
 
   let Html = `
-    <html style="background: rgba(255, 255, 255, 0.6)">
+  <html>
     <head>
-    <style>
-    @font-face {
-        font-family: AlibabaPuHuiTi-2-55-Regular;
-        src:url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/AlibabaPuHuiTi-2/AlibabaPuHuiTi-2-55-Regular/AlibabaPuHuiTi-2-55-Regular.woff2) format('woff2');
-      }  
-      html, body {
-          margin: 0;
-          padding: 0;
-          font-family: 'AlibabaPuHuiTi-2-55-Regular', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
-      }         
-    </style>
-    </head>
-    <div class="fortune" style="width: 30%; height: 65rem; float: left; text-align: center; background: rgba(255, 255, 255, 0.6);">
-    <h2>今日老婆</h2>
-    <br>
-    <div class="content" style="margin: 0 auto; padding: 12px 12px; height: 49rem; max-width: 980px; max-height: 1024px; background: rgba(255, 255, 255, 0.6); border-radius: 15px; backdrop-filter: blur(3px); box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); writing-mode: vertical-rl; text-orientation: mixed;">
-        <p style="font-size: 2em">${content}</p>
+      <style>
+             /* 自定义字体定义 */
+          @font-face {
+              font-family: 'HarmonyOS';
+              src: url('https://dd.atxrom.com/font/HarmonyOS.woff2') format('woff2');
+              font-weight: normal; /* 明确指定字体权重，尽管默认为normal */
+              font-style: normal;  /* 明确指定字体样式，尽管默认为normal */
+          }
+          
+          /* 全局样式重置与设置 */
+          html, body {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box; /* 简化元素尺寸计算，包含padding和border */
+              font-family: 'HarmonyOS', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+              line-height: 1.6; /* 设置行高，提高文本可读性 */
+              /* 可选：设置全局字体大小、颜色等 */
+              /* font-size: 16px; */
+              /* color: #333; */
+          }
+          /* marry.css */
+          body, html {
+              background: rgba(255, 255, 255, 0.6);
+          }
+          
+          .fortune {
+              width: 30%;
+              height: 65rem;
+              float: left;
+              text-align: center;
+          }
+          
+          .fortune .content {
+              margin: 0 auto;
+              padding: 12px 12px;
+              height: 49rem;
+              max-width: 980px;
+              max-height: 1024px;
+              background: rgba(255, 255, 255, 0.6);
+              border-radius: 15px;
+              backdrop-filter: blur(3px);
+              box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+              writing-mode: vertical-rl;
+              text-orientation: mixed;
+          }
+          
+          .fortune .content p {
+              font-size: 2em;
+          }
+          
+          .image {
+              height: 65rem;
+              width: 70%;
+              float: right;
+              box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+              text-align: center;
+          }
+          
+          .image img {
+              height: 100%;
+              filter: brightness(100%);
+              overflow: hidden;
+              display: inline-block;
+              vertical-align: middle;
+              margin: 0;
+              padding: 0;
+          }
+      
+     </style>
+   </head>
+  <body>
+   <div class="fortune">
+     <h2>今日老婆</h2>
+        <br>
+       <div class="content">
+          <p>${content}</p>
+       </div>
+          <br>
+          <br>
+          <br>
+        <p>Create By Logier-Plugin </p>
+   </div>
+     <div class="image">
+      <img src="${imageUrl}" />
     </div>
-    <br>
-    <br>
-    <br>
-    <p>Create By Logier-Plugin </p>
-    </div>
-    <div class="image" style="height:65rem; width: 70%; float: right; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); text-align: center;">
-    <img src=${imageUrl} style="height: 100%; filter: brightness(100%); overflow: hidden; display: inline-block; vertical-align: middle; margin: 0; padding: 0;"/>
-    </div>
-    </html>
-    `
+  </body>
+ </html> `
 
-  let browser
+  let browser;
   try {
-    browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox', '--disable-setuid-sandbox'] })
-    const page = await browser.newPage()
-    await page.setContent(Html)
-    const image = Buffer.from(await page.screenshot({ fullPage: true }))
-    e.reply([replyMessage, segment.image(image)], true)
+    // 启动Puppeteer浏览器实例，设置无头模式，并添加一些启动参数以避免某些环境下的权限问题
+    browser = await puppeteer.launch({headless: 'new', args: ['--no-sandbox', '--disable-setuid-sandbox']});
+
+    // 创建一个新的页面实例
+    const page = await browser.newPage();
+
+    // 设置页面内容为HTML字符串（这里假设Html变量已经定义并包含了要渲染的HTML内容）
+    await page.setContent(Html);
+
+    // 截取整个页面的图片，并将结果转换为Buffer对象
+    const image = Buffer.from(await page.screenshot({fullPage: true}));
+
+    // 发送包含图片的消息
+    e.reply([replyMessage, segment.image(image)], true);
   } catch (error) {
-    logger.info('[今日老婆]：图片渲染失败，使用文本发送')
+    // 如果过程中发生错误，记录日志，并尝试使用文本消息回复
+    logger.info('[今日老婆]：图片渲染失败，使用文本发送');
   } finally {
+    // 无论是否发生错误，确保浏览器实例被关闭
     if (browser) {
-      await browser.close()
+      await browser.close();
     }
   }
 }
